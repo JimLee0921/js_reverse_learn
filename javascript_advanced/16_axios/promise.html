@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/axios.min.js"></script>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        // axios 可以提前进行配置来设置请求响应拦截器
+        // 添加请求拦截器
+        axios.interceptors.request.use(function (config) {
+            // 在发送请求之前做些什么
+            return config;
+        }, function (error) {
+            // 对请求错误做些什么
+            return Promise.reject(error);
+        });
+
+        // 添加响应拦截器
+        axios.interceptors.response.use(function (response) {
+            // 对响应数据做点什么
+            return response;
+        }, function (error) {
+            // 对响应错误做点什么
+            return Promise.reject(error);
+        });
+
+        $(function () {
+            $("#btn").click(function () {
+                axios.get("http://127.0.0.1:8000/promise").then(function (response) {
+                    console.log(response.data);
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    <p>
+        Promise 是 JavaScript 中处理异步操作的一种机制，它能够让异步代码看起来更像同步代码，从而提高代码的可读性和可维护性。Promise
+        的出现解决了传统回调函数嵌套过深（即“回调地狱”）的问题，是现代 JavaScript 开发中不可或缺的工具。
+
+        Promise 通过 new Promise() 构造函数创建。构造函数接受一个函数（称为 executor），这个函数有两个参数：resolve 和
+        reject。
+
+        resolve(value)：将 Promise 的状态从 Pending 变为 Fulfilled，并传递成功的结果。
+        reject(error)：将 Promise 的状态从 Pending 变为 Rejected，并传递失败的原因。
+
+        Promise 提供了两个主要方法来处理异步操作的结果：
+
+        .then(onFulfilled, onRejected)：当 Promise 变为 Fulfilled 时，调用 onFulfilled 函数；当变为 Rejected 时，调用
+        onRejected 函数。
+        .catch(onRejected)：专门用于捕获 Rejected 状态的错误，相当于 .then(null, onRejected)。
+    </p>
+
+    <button id="btn">点击发送请求</button>
+</div>
+</body>
+</html>

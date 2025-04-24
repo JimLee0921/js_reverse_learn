@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $('#btn').click(function (){
+                // get 请求
+                // $.ajax({
+                //     url: 'https://www.httpbin.org/get',
+                //     method: "get",
+                //     headers: {
+                //         "name": "zhangsan",
+                //         "age": 18,
+                //         "cookie": "123456789"
+                //     },
+                //     success: function (response){
+                //         console.log(response);
+                //         $('#content').html(JSON.stringify(response));
+                //     }
+                // })
+                // post 请求
+                $.ajax({
+                    url: 'https://www.httpbin.org/post',
+                    method: "post",
+                    headers: {
+                        "cookie": "123456789"
+                    },
+                    data: JSON.stringify({
+                        "name": "zhangsan",
+                        "age": 18,
+                    }),
+                    success: function (response){
+                        console.log(response);
+                    }
+                })
+            })
+
+        });
+    </script>
+</head>
+<body>
+    下面内容由httpbin提供
+    <button id="btn">获取httpbin请求内容</button>
+    <div id="content"></div>
+
+</body>
+</html>

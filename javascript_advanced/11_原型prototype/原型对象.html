@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        /**
+         *
+         * 每个函数都有一个 prototype 属性（构造函数的专属特性）
+         * 每个对象都有一个隐藏的 [[Prototype]] 属性（可通过 __proto__ 访问）
+         * 原型链是实现 JavaScript 继承的核心机制
+         * 构造函数通过 prototype 属性访问，对象通过 __proto__ 属性访问
+         *
+         * 当访问对象属性时：
+         * 先在自身属性中查找
+         * 找不到则通过 __proto__ 到原型对象中查找
+         * 递归直到 Object.prototype（原型链顶端，其 __proto__ 为 null）
+         */
+        var arr = []; // 是一个 Array 对象
+        Array.prototype.xxx = function (){
+            console.log('xxx')
+        }
+        console.log(Array.prototype);
+        console.log(arr.__proto__);
+        console.log(arr.__proto__ === Array.prototype)
+
+        console.log(arr.__proto__.__proto__ === Object.prototype)
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

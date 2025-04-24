@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function test() {
+            return new Promise(function (resolve, reject) {
+                console.log("📡 Step 1: 发送Ajax请求...");
+
+                setTimeout(function () {
+                    const responseCode = Math.random() > 0.5 ? 200 : 500;
+
+                    if (responseCode === 200) {
+                        const data = {
+                            code: 200,
+                            message: "请求成功",
+                            data: {username: "Jim", age: 24}
+                        };
+                        console.log("✅ Step 2: 请求成功！");
+                        resolve(data);
+                    } else {
+                        reject("❌ Step 2: 请求失败，状态码为 500");
+                    }
+                }, 2000); // 时间调短点方便测试
+            });
+        }
+
+        function processData(data) {
+            return new Promise(function (resolve) {
+                console.log("🔍 Step 3: 处理数据...");
+                const username = data.data.username;
+                resolve(username);
+            });
+        }
+
+        function saveData(username) {
+            return new Promise(function (resolve) {
+                console.log(`💾 Step 4: 正在保存 ${username} 的数据...`);
+                setTimeout(() => {
+                    console.log(`✅ Step 5: ${username} 的数据保存成功！`);
+                    resolve();
+                }, 1000);
+            });
+        }
+
+        // 🔗 Promise 链式调用
+        test()
+            .then(res => processData(res))       // 处理数据
+            .then(username => saveData(username)) // 保存数据
+            .then(() => {
+                console.log("🎉 Step 6: 所有操作完成！");
+            })
+            .catch(err => {
+                console.error("🔥 错误发生:", err);
+            });
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

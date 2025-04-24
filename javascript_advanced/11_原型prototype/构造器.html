@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 构造器：构造器本质上是一个普通函数，但被设计用于通过 new 关键字批量创建具有相同结构的对象
+        function User(name, age) {
+            this.name = name;
+            this.age = age;
+            this.eat = function (food) {
+                console.log(this.name + ' eat ' + food);
+            }
+        }
+
+        /**
+         * new 操作符会做四件事：
+         * 创建一个空对象 {}
+         * 将该对象的原型指向构造函数的 prototype
+         * 将构造函数内的 this 绑定到这个新对象
+         * 如果构造函数没有返回对象，则自动返回这个新对象
+         */
+        const user1 = new User('Jim', 20);
+        const user2 = new User('Lucy', 18);
+        console.log(user1.constructor); // 打印出构造器，打印结果为 User方法
+        console.log(user1.constructor === User);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

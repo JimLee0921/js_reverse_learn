@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        $(function () {
+            $("#btn").click(function () {
+                $.ajax({
+                    url: "http://127.0.0.1:8000/jsonp",
+                    type: "get",
+                    dataType: "jsonp",
+                    success: function (data) {
+                        console.log(data);
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<div>
+    <p>
+        JSONP（JSON with Padding）是一种解决跨域数据请求的前端技术，主要通过动态创建 `script` 标签实现跨域请求。
+        因为在请求 js, css , img 等资源时，浏览器会阻止跨域请求，所以可以通过动态创建 `script` 标签来完成跨域请求
+        其实就是把正常的请求伪装成一个 js 代码的加载
+        服务器返回的不是普通的 json 数据，而是一个函数调用，这个函数调用的参数是 json 数据。
+        通过这个函数调用，前端就可以拿到 json 数据。
+        类似网站 JD 返回数据为 `xxxx(json数据)`
+    </p>
+    <button id="btn">发送请求</button>
+</div>
+</body>
+</html>

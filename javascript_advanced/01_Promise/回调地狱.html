@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        <!--   setTimeout和ajax等就是异步操作     -->
+        console.log('A事件请求')
+        setTimeout(function () {
+            console.log('A事件请求结束');
+            console.log('B事件请求');
+            setTimeout(function () {
+                console.log('B事件请求结束');
+                console.log('C事件请求');
+                setTimeout(function (){
+                    console.log('C事件请求结束');
+                }, 3000)
+            }, 3000)
+        }, 3000)
+        console.log('next...')
+    </script>
+</head>
+<body>
+
+</body>
+</html>

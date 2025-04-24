@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // Person 当为 class 来看
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.eat = function (food) {
+                console.log(this.name + ' eat ' + food);
+            }
+        }
+        // 给 Person 类添加 drink 功能， prototype可以给类(构造器)增加新的功能
+        Person.prototype.drink = function (drink) {
+            console.log(this.name + ' drink ' + drink);
+        }
+        var p1 = new Person('zhangsan', 18);
+        p1.eat('apple');
+        p1.drink('water');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

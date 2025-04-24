@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 反调试代码，无限植入debugger
+        // (function () {
+        //     debugger
+        // })()
+        // setInterval(function () {
+        //     debugger // 让程序暂停在这里
+        // }, 1000)
+
+        // js 中所有的函数都是 Function 的对象，函数执行代码通过 Function 构造器进行传递
+        var func1 = new Function('console.log(123);')
+
+        // 相当于
+        function func2() {
+            console.log(123);
+        }
+
+        new Function("debugger")() // 相当于 (function () { debugger })();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+
+# Python 编译文件
+__pycache__/
+*.py[cod]
+*.pyo
+
+# 虚拟环境
+.venv/
+env/
+venv/
+
+# 编辑器配置
+.vscode/
+.idea/
+*.swp
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# 日志/数据库等临时文件
+*.log
+*.sqlite3
+*.db
+
+# Jupyter Notebook 检查点
+.ipynb_checkpoints/
+
+# 单元测试覆盖率报告
+htmlcov/
+coverage.xml
+.cache/
+
+# pipenv
+Pipfile.lock
+
+# poetry
+poetry.lock
+
+# pyproject build artifacts
+build/
+*.egg-info/
+
+# 如果你用的是 PyInstaller
+*.spec
+
+# 你自己生成的配置文件或缓存
+config.json
+*.bak

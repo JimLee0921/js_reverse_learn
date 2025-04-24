@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+
+        function test() {
+            // 使用 promise 封装异步操作.返回 promise 对象
+            return new Promise(function (resolve, reject) {
+                // 异步操作
+                console.log("异步操作发送Ajax请求")
+                setTimeout(function () {
+                    // 模拟请求接口获取数据,状态码为500或者200
+                    const responseCode = Math.random() > 0.5 ? 200 : 500;
+                    if (responseCode === 200) {
+                        const data = {
+                            code: 200,
+                            message: "请求成功",
+                            data: {username: "Jim", age: 24}
+                        };
+                        resolve(data); // 成功 resolve() 函数用来将 promise 状态改为 fulfilled
+                    } else {
+                        reject("请求失败，服务器返回状态码 500"); // 失败 reject() 函数用来将 promise 状态改为 rejected
+                    }
+                }, 3000) // 模拟请求接口耗时
+            })
+        }
+
+        let p = test();
+        p.then(function (data) { // then第一个函数参数触发条件: promise 状态为 fulfilled
+            console.log("响应数据", data);
+            console.log("异步操作结束")
+        }, function (error) {  // then第二个函数参数触发条件: promise 状态为 rejected
+            console.log("请求失败", error);
+        })
+    </script>
+</head>
+<body>
+
+</body>
+</html>

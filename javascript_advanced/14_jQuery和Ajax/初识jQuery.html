@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        // 原生 js 代码
+        // window.onload = function () {
+        //     document.querySelector('#btn').addEventListener('click', function () {
+        //         var inp = document.querySelector("#inp");  // 获取输入框
+        //         var val = inp.value; // 获取输入框的值
+        //         val = "哈哈" + val + "哈哈";
+        //         inp.value = val;
+        //     })
+        // }
+        // jQuery 代码(性能更好)
+        $(function () {
+            $("#btn").click(function () {
+                var inp = $("#inp");
+                var val = inp.val();  // 取值
+                val = "哈哈" + val + "哈哈";
+                inp.val(val);
+            });
+            $('ul li').each(function () {
+                // each中的函数获得的是 HTML 中的 DOM 对象，不是 jQuery 对象，需要转换为 jQuery 对象才能使用 jQuery 的功能
+                var text = $(this).text();
+                console.log(text)
+            });
+        })
+    </script>
+</head>
+<body>
+<input type="text" id="inp">
+<button id="btn">按钮</button>
+<ul>
+    <li>apple</li>
+    <li>banana</li>
+    <li>peach</li>
+    <li>meat</li>
+    <li>sheep</li>
+</ul>
+</body>
+</html>

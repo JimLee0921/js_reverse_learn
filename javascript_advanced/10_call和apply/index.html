@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function Person(name, age) {
+            this.name = name;
+            this.age = age;
+            this.eat = function (food) {
+                console.log(this.name + ' eat ' + food);
+            }
+        }
+
+        var p1 = new Person('zhangsan', 18);
+        var p2 = new Person('lisi', 20);
+        // 正常调用
+        p1.eat('apple');
+        p2.eat('banana');
+
+
+        // call call 方法允许调用一个函数，并显式地指定该函数内部 this 的值。
+        // 就是使用 call 时的第一个参数，就是函数内部 this 的值。
+        // function.call(thisArg, arg1, arg2, ...)
+        p2.eat.call(p1, 'shit') // 等同于 p1.eat('shit')
+
+        var name = "dsb"
+
+        function sport(user1, user2) {
+            // 普通调用时 this 指向 window
+            console.log(this.name + ' play with ' + user1 + ' and ' + user2)
+        }
+
+        sport('zhangsan', 'lisi')
+        sport.call(p1, 'zhangsan', 'lisi')
+
+        // apply 方法与 call 类似，也用于改变函数的 this 指向
+        // 区别在于，apply 接受一个参数数组，而不是单独的参数。
+        sport.apply(p1, ['zhangsan', 'lisi'])
+
+        var $_ax, $_ex;
+
+        function voidFunc() {
+            $_ax = arguments[0];// arguments 是函数内部隐藏属性 是一个类数组对象，包含了函数的参数
+            $_ex = arguments[1];
+        }
+
+        voidFunc('wangwu', 20);
+        console.log($_ax, $_ex);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 需要在浏览器环境演示
+        // var lin = window.setInterval();
+        // window.setInterval = function (fn, s) {
+        //     debugger;       // 给所有的 setInterval 都打上断点
+        //     return lin(fn, s); //调用原本正常的 setInterval
+        // }
+        // window.setInterval(function () {
+        //     console.log('setInterval执行');
+        // }, 6000)
+
+
+        // 在 js 逆向时可能会使用到 JSON.stringify() 和 JSON.parse()
+        // 这两个一个是把 对象转成字符串，一个是把字符串转成对象
+        var s = JSON.stringify({
+            name: 'zhangsan',
+            age: 18
+        })
+        console.log(s);
+        var obj = JSON.parse(s);
+        console.log(obj)
+
+        // hook JSON.parse() 函数
+        var parse = JSON.parse;
+        JSON.parse = function (s) {
+            console.log(s);
+            debugger;
+            return parse(s);
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

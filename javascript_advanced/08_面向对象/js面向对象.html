@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        // 直接构建一个对象好处是方便，但是缺点是如果构建的对象很多，那么就会造成代码冗余
+        var demoUser = {
+            name: 'JimLee',
+            age: 17,
+            eat: function (food) {
+                console.log(this.name + ' eat ' + food)
+            }
+        }
+        console.log(demoUser.name)
+        demoUser.eat('shit')
+
+        // 第二种创建对象，使用 constructor 构造器
+        function User(name, age) { // 本质上是一个函数，但是这个函数的用途是创建对象
+            this.name = name
+            this.age = age
+            this.eat = function (food) {
+                console.log(this.name + ' eat ' + food)
+            }
+        }
+
+
+        // 内置的构造器创建对象方法
+        var tm = new Date();
+        var arr = new Array() // 本质就是 var arr = []
+
+        // 所以自定义的构造器也是使用 new 关键字创建对象，函数前有 new 就是构造器，没有就是普通函数调用
+        var user1 = new User('JimLee', 17)
+        console.log(user1.name)
+        console.log(user1.age)
+        user1.eat('shit')
+    </script>
+</head>
+<body>
+
+</body>
+</html>
