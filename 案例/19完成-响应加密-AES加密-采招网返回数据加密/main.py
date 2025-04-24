@@ -9,14 +9,9 @@ import requests
 from Crypto.Cipher import AES
 import base64
 from urllib.parse import quote
+from tools.crypto_utils import words_to_bytes
 
 
-def words_to_bytes(words):
-    """将 CryptoJS 的 WordArray 转为 python 可用的 bytes"""
-    b = bytearray()
-    for word in words:
-        b.extend(word.to_bytes(4, 'big'))
-    return bytes(b)
 
 
 def aes_decrypt(ciphertext_base64, key_words, iv_words):

@@ -15,3 +15,11 @@ def md5_decrypt(string: str):
     """
     value = md5(string.encode('utf-8'))  # 传入的必须是字节
     return value.hexdigest()
+
+
+def words_to_bytes(words):
+    """将 CryptoJS 的 WordArray 转为 python 可用的 bytes"""
+    b = bytearray()
+    for word in words:
+        b.extend(word.to_bytes(4, 'big'))
+    return bytes(b)
