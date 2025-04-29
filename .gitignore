@@ -50,6 +50,7 @@ build/
 # 如果你用的是 PyInstaller
 *.spec
 
-# 你自己生成的配置文件或缓存
+# 自己生成的配置文件或缓存
 config.json
 *.bak
+.env

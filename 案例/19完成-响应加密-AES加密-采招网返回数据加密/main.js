@@ -1,7 +1,7 @@
 // AES 解密
 // aes_decrypt.js
 function aesDecrypt(ciphertext) {
-    var CryptoJS = require("crypto-js");
+    const CryptoJS = require("crypto-js");
 
     var key = {
         "words": [
